@@ -46,7 +46,7 @@ cfssl gencert -ca=ca.pem -ca-key=ca-key.pem -config=/tmp/ca-config.json -profile
 cfssl gencert -ca=ca.pem -ca-key=ca-key.pem -config=/tmp/ca-config.json -hostname=10.32.0.1,$CONTROLLER_IP,$CONTROLLER_PUBLIC_IP,127.0.0.1,localhost,kubernetes.default -profile=kubernetes /tmp/kubernetes-csr.json | cfssljson -bare kubernetes
 cfssl gencert -ca=ca.pem -ca-key=ca-key.pem -config=/tmp/ca-config.json -profile=kubernetes /tmp/service-account-csr.json | cfssljson -bare service-account
 #GENERATE KUBECONFIGS
-wget https://storage.googleapis.com/kubernetes-release/release/v1.10.2/bin/linux/amd64/kubectl
+wget https://storage.googleapis.com/kubernetes-release/release/v1.21.0/bin/linux/amd64/kubectl
 chmod +x kubectl
 sudo mv kubectl /usr/local/bin/
 kubectl config set-cluster kubernetes-the-hard-way --certificate-authority=ca.pem --embed-certs=true --server=https://$CONTROLLER_IP:6443 --kubeconfig=worker0.mylabserver.com.kubeconfig
