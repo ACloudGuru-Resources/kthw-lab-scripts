@@ -92,3 +92,4 @@ EOF
 #MOVE AND CHOWN FILES
 cp /tmp/ca.pem /tmp/ca-key.pem /tmp/kubernetes.pem /tmp/kubernetes-key.pem /tmp/service-account.pem /tmp/service-account-key.pem /tmp/kube-controller-manager.kubeconfig /tmp/kube-scheduler.kubeconfig /tmp/admin.kubeconfig /tmp/encryption-config.yaml /home/cloud_user
 chown cloud_user:cloud_user /home/cloud_user/*.pem /home/cloud_user/*.kubeconfig /home/cloud_user/encryption-config.yaml
+
