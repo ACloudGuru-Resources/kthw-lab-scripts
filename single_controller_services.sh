@@ -1,9 +1,9 @@
 # Build services for a single controller lab setup
 # Required env vars: CONTROLLER_IP, INTERNAL_IP, WORKER0_IP, WORKER1_IP
 #ETCD SETUP
-wget -q --show-progress --https-only --timestamping "https://github.com/coreos/etcd/releases/download/v3.3.5/etcd-v3.3.5-linux-amd64.tar.gz"
-tar -xvf etcd-v3.3.5-linux-amd64.tar.gz
-mv etcd-v3.3.5-linux-amd64/etcd* /usr/local/bin/
+wget -q --show-progress --https-only --timestamping "https://github.com/etcd-io/etcd/releases/download/v3.4.15/etcd-v3.4.15-linux-amd64.tar.gz"
+tar -xvf etcd-v3.4.15-linux-amd64.tar.gz
+mv etcd-v3.4.15-linux-amd64/etcd* /usr/local/bin/
 mkdir -p /etc/etcd /var/lib/etcd
 cp /home/cloud_user/ca.pem /home/cloud_user/kubernetes-key.pem /home/cloud_user/kubernetes.pem /etc/etcd/
 cat << EOF | sudo tee /etc/systemd/system/etcd.service
