@@ -1,9 +1,9 @@
 # Build services for a single controller lab setup
 # Required env vars: CONTROLLER_IP, INTERNAL_IP, WORKER0_IP, WORKER1_IP
 #ETCD SETUP
-wget -q --show-progress --https-only --timestamping "https://github.com/etcd-io/etcd/releases/download/v3.4.15/etcd-v3.4.15-linux-amd64.tar.gz"
-tar -xvf etcd-v3.4.15-linux-amd64.tar.gz
-mv etcd-v3.4.15-linux-amd64/etcd* /usr/local/bin/
+wget -q --show-progress --https-only --timestamping "https://github.com/coreos/etcd/releases/download/v3.3.5/etcd-v3.3.5-linux-amd64.tar.gz"
+tar -xvf etcd-v3.3.5-linux-amd64.tar.gz
+mv etcd-v3.3.5-linux-amd64/etcd* /usr/local/bin/
 mkdir -p /etc/etcd /var/lib/etcd
 cp /home/cloud_user/ca.pem /home/cloud_user/kubernetes-key.pem /home/cloud_user/kubernetes.pem /etc/etcd/
 cat << EOF | sudo tee /etc/systemd/system/etcd.service
@@ -42,7 +42,7 @@ systemctl start etcd
 #CONTROL PLANE SETUP
 mkdir -p /etc/kubernetes/config
 cd /tmp
-wget -q --show-progress --https-only --timestamping "https://storage.googleapis.com/kubernetes-release/release/v1.21.0/bin/linux/amd64/kube-apiserver" "https://storage.googleapis.com/kubernetes-release/release/v1.21.0/bin/linux/amd64/kube-controller-manager" "https://storage.googleapis.com/kubernetes-release/release/v1.21.0/bin/linux/amd64/kube-scheduler" "https://storage.googleapis.com/kubernetes-release/release/v1.21.0/bin/linux/amd64/kubectl"
+wget -q --show-progress --https-only --timestamping "https://storage.googleapis.com/kubernetes-release/release/v1.10.2/bin/linux/amd64/kube-apiserver" "https://storage.googleapis.com/kubernetes-release/release/v1.10.2/bin/linux/amd64/kube-controller-manager" "https://storage.googleapis.com/kubernetes-release/release/v1.10.2/bin/linux/amd64/kube-scheduler" "https://storage.googleapis.com/kubernetes-release/release/v1.10.2/bin/linux/amd64/kubectl"
 chmod +x kube-apiserver kube-controller-manager kube-scheduler kubectl
 mv kube-apiserver kube-controller-manager kube-scheduler kubectl /usr/local/bin/
 mkdir -p /var/lib/kubernetes/
